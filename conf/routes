@@ -16,24 +16,26 @@ GET /faq                            controllers.StaticController.faq
 GET /press                          controllers.StaticController.press
 
 # =========================================================
-# Streams
+# Channel
 # =========================================================
 
 GET /channels                    controllers.ChannelController.index
 GET /channels/new                controllers.ChannelController.newChannel
 GET /channels/:id                controllers.ChannelController.show(id: Long)
 
-POST /streams                   controllers.ChannelController.create
+# TODO fix this
+GET /channels/:id/subscribe      controllers.ChannelController.subscribe(id: Long)
+
+POST /streams                    controllers.ChannelController.create
 
 # =========================================================
-# Feed Items
+# Items
 # =========================================================
 
-GET /channel/:stream/items/:item        controllers.ItemController.show(stream: Long, item: Long)
-
+GET /channel/:id/items/:item            controllers.ItemController.show(id: Long, item: Long)
 POST /channel/:id                       controllers.ItemController.create(id: Long)
 
-GET /channel/:channel/items/:item/delete controllers.ItemController.delete(channel: Long, item: Long)
+GET /channel/:id/items/:item/delete     controllers.ItemController.delete(id: Long, item: Long)
 
 # =========================================================
 # Actions

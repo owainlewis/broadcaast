@@ -22,9 +22,6 @@ object ActionsRepository extends Repository[CommentAction] {
    * Returns true if a user has already performed an action on a comment
    *
    * A given action can only be performed once
-   *
-   * @param comment The comment ID
-   * @param user The user ID
    */
   def userAlreadyLiked(item: Long, user: Long) = withConnection { implicit c =>
     SQL("SELECT * FROM Actions WHERE item_id = {item} AND user_id = {user} LIMIT 1")
