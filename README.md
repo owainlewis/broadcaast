@@ -6,4 +6,6 @@ Broadcaast lets you create channels which are containers for content (eg. status
 
 If a channel is made public, other users can add things to the channel.
 
+![](https://github.com/owainlewis/broadcaast/blob/master/public/images/preview1.png)
+
 
