@@ -8,4 +8,6 @@ If a channel is made public, other users can add things to the channel.
 
 ![](https://github.com/owainlewis/broadcaast/blob/master/public/images/preview1.png)
 
+![](https://github.com/owainlewis/broadcaast/blob/master/public/images/preview2.png)
+
 
