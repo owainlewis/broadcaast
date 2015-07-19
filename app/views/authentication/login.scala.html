@@ -1,0 +1,21 @@
+@(loginForm: Form[LoginData], currentUser: Option[User])(implicit flash: Flash)
+
+@layouts.main("", currentUser) {
+
+    <div class="card padded">
+    <h1>Login</h1>
+
+    @flash.get("error").getOrElse("")
+
+    <div class="discussion-form">
+        @helper.form(action = routes.AuthenticationController.authenticate) {
+            @helper.inputText(loginForm("email"))
+            @helper.inputPassword(loginForm("password"))
+            <p>
+                No account? <a href="@routes.RegistrationController.signUp">Sign up</a>
+            </p>
+            <input type="submit" value="Login" class="btn btn-primary" />
+        }
+    </div>
+    </div>
+}

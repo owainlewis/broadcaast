@@ -1,0 +1,34 @@
+@(stream: Channel, comments: Seq[Item])
+
+<div class="card padded">
+
+    <!-- Essential information -->
+
+    <h1>@io.forward.util.Sanitizer.truncate(stream.title)</h1>
+
+    <h3>0 subscribers</h3>
+
+    @if(stream.locked) {
+        <p><strong>This channel is locked. Only the owner or invited members can add to it</strong></p>
+    } else {
+        <p><strong>This channel is open. Anyone can add content</strong></p>
+    }
+
+    <ul class="participants">
+      @io.forward.util.Comments.extractAvatars(stream, comments).map { profileImage =>
+        <li><img src="@profileImage" /></li>
+      }
+    </ul>
+
+    @stream.createdBy.map { user =>
+      <p>
+          Discussion started by <a href="@routes.UserController.show(user.username)">@user.username</a>
+
+          @(100 - comments.length) Comments remaining
+      </p>
+    }
+
+    @for(context <- stream.context) {
+        <div class="context">@context</div>
+    }
+</div>

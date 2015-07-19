@@ -1,0 +1,36 @@
+@(comment: Item, currentUser: Option[User])
+
+<div class="card card-image item-@comment.id">
+    <div class="card-header">
+        <div class="header-left">
+            <img class='avatar' src="@comment.userImage" />
+        </div>
+        <div class="header-right">
+            <h3>@comment.userName</h3>
+            <div class="posted">
+                 @io.forward.util.HumanDate.timeAgoInWords(comment.created)
+            </div>
+        </div>
+    </div>
+    <div class="card-inner">
+
+    </div>
+    <div class="card-meta">
+        <ul>
+            <li class="action">
+                <a class="like" href="@routes.ActionController.like(comment.channel, comment.id)">
+                    <i class="fa fa-heart"></i>
+                    <span>@comment.likes</span>
+                </a>
+            </li>
+            @if(comment.user.isDefined && currentUser.map(_.id) == comment.user) {
+                <li class="action">
+                    <a class="delete" href="@routes.ItemController.delete(comment.channel, comment.id)">
+                        <i class="fa fa-trash-o"></i>
+                        </a>
+                </li>
+
+            }
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+@(user: User, currentUser: Option[User])
+
+@layouts.main("User account", currentUser) {
+
+    <div class="card padded">
+    <div class="col-md-2 profile-left">
+        <img class="avatar" src="@models.User.imageURL(user.email)" alt="@user.username" />
+    </div>
+
+    <div class="col-md-10 profile-right">
+        <h1>@user.username</h1>
+        <p>Karma: 0</p>
+
+        @if(Some(user) == currentUser) {
+          <p>API Token: @user.token</p>
+        }
+
+        <div class="user-channels">
+            <h3>Channels</h3>
+            @if(user.streams.isEmpty) {
+                <p>This user has no public broadcasts</p>
+            } else {
+
+                <ul class="pretty-list">
+                    @user.streams.map { stream =>
+                        <li><a href="@routes.ChannelController.show(stream.id)">@stream.title</a></li>
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+    </div>
+}

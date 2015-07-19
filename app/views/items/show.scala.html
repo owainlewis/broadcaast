@@ -1,0 +1,16 @@
+@(item: Item)
+
+@layouts.main("Discusslr.com", None) {
+
+    @if(item.body.isDefined) {
+        <div class="card-permalink">
+            <div class="item-body">
+                <h1>
+                    @item.body
+                </h1>
+            </div>
+        </div>
+    }
+
+}
+

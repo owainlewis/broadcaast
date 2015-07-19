@@ -1,0 +1,15 @@
+@(user: Option[User])
+
+<nav class="desktop-menu">
+    <ul>
+        <li><a href="@routes.ChannelController.index">Channels</a></li>
+        @if(user.isEmpty) {
+            <li><a href="@routes.RegistrationController.signUp">Sign up</a></li>
+            <li><a href="@routes.AuthenticationController.login">Log in</a></li>
+        } else {
+            <li><a href="@routes.UserController.show(user.get.username)">Profile</a></li>
+            <li><a href="@routes.ChannelController.newChannel">New Channel</a></li>
+            <li><a href="@routes.AuthenticationController.logout">Log out</a></li>
+        }
+    </ul>
+</nav>

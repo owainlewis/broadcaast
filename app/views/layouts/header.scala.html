@@ -1,0 +1,17 @@
+@(user: Option[User])
+
+<header id="header">
+    <h1><a href="/">Broadcaast</a></h1>
+
+    <nav class="sub-menu-toggle">
+      <ul>
+          <li><a id="toggle-menu">MENU</a></li>
+      </ul>
+    </nav>
+
+    @layouts.nav(user)
+</header>
+
+<div class="sub-header">
+    @layouts.nav(user)
+</div>

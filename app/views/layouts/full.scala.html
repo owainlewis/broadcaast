@@ -1,0 +1,16 @@
+@(title: String, currentUser: Option[User] = None)(content: Html)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>@title</title>
+        @layouts.head()
+    </head>
+    <body>
+
+        @layouts.header(currentUser)
+
+        @content
+
+    </body>
+</html>

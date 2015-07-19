@@ -1,0 +1,10 @@
+@(comment: Item)
+
+<div class="card card-latest padded">
+    <h3>Latest</h3>
+    @if(comment.body.isDefined) {
+            <div class="content">
+                @comment.body
+            </div>
+    }
+</div>

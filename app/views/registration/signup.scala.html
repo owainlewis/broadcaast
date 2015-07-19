@@ -1,0 +1,29 @@
+@(registrationForm: Form[RegistrationData], currentUser: Option[User])
+
+@layouts.main("Register your new Discusslr account", currentUser) {
+
+    <div class="card padded">
+
+    <h1>Join Broadcaast</h1>
+
+    <p>Register your account in less than 60 seconds</p>
+
+    <div class="registration-form">
+        @helper.form(action = routes.RegistrationController.create) {
+            @if(registrationForm.hasErrors) {
+                <div class="info form-errors">
+                    <ul>
+                        @for(error <- registrationForm.errors) {
+                            <li>@error.message</li>
+                        }
+                    </ul>
+              </div>
+            }
+            @helper.inputText(registrationForm("username"))
+            @helper.inputText(registrationForm("email"))
+            @helper.inputPassword(registrationForm("password"))
+            <input class="btn btn-primary" type="submit" value="Signup" />
+        }
+    </div>
+    </div>
+}

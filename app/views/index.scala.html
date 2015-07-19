@@ -1,0 +1,20 @@
+@(registrationForm: Form[RegistrationData], currentUser: Option[User])
+
+@layouts.home("Discusslr", currentUser) {
+
+    <div class="start">
+        <h1>Broadcast</h1>
+        <h2>Express your ideas</h2>
+
+        <div class="quick-start">
+            <div class="home-registration-form">
+                @helper.form(action = routes.RegistrationController.create) {
+                    <input type="email" id="email" name="email" placeholder="Email">
+                    <input type="password" id="password" name="password" placeholder="Password">
+                    <input type="text" id="username" name="username" placeholder="Username">
+                    <input class="btn btn-primary" type="submit" value="Signup" />
+                }
+            </div>
+        </div>
+    </div>
+}

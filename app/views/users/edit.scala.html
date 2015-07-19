@@ -1,0 +1,17 @@
+@(user: User, form: Form[ProfileData])
+
+@layouts.main("Edit your profile", Some(user)) {
+
+    <h1>Edit your profile</h1>
+
+    <div class="user-profile-form">
+        @helper.form(action = routes.UserController.update) {
+            @helper.inputText(form("username"))
+            @helper.inputText(form("email"))
+            @helper.inputPassword(form("password"))
+            <input class="btn btn-primary" type="submit" value="Update profile" />
+        }
+    </div>
+
+}
+

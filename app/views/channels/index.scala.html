@@ -1,0 +1,21 @@
+@(newest: Seq[Channel], currentUser: Option[User])
+
+@layouts.main("All discussions", currentUser) {
+
+  <div class="card padded">
+
+      <h1>Popular</h1>
+      <ul class="pretty-list">
+          @newest.map { stream =>
+          <li>
+              <a href="@routes.ChannelController.show(stream.id)">
+                  @io.forward.util.Sanitizer.truncate(stream.title)
+                  <div class="created">@stream.createdInWords</div>
+                  <div class="created-by">Started by <strong>@(stream.createdBy map (_.username) getOrElse("Unknown User"))</strong></div>
+              </a>
+          </li>
+          }
+      </ul>
+  </div>
+
+}

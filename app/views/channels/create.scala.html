@@ -1,0 +1,34 @@
+@(streamForm: Form[ChannelData], currentUser: Option[User])
+
+@layouts.main("Start a channel", currentUser) {
+
+    <div class="card padded">
+
+        <h1>Create a new channel</h1>
+
+        @helper.form(action = routes.ChannelController.create(), 'enctype -> "multipart/form-data") {
+
+            @if(streamForm.errors("title").length > 0) {
+                <div class="alert form-error">
+                    <p>Title cannot be empty</p>
+                </div>
+            }
+
+        <div class="field">
+            <label>Title</label>
+            <input type="text" id="title" name="title" placeholder="The title of this channel">
+        </div>
+
+        <div class="field">
+            <p>When a channel is locked you will be the only one that can add to it</p>
+            <label>Lock it?</label>
+            <input type="checkbox" id="locked" name="locked" value="true" checked="checked">
+
+        </div>
+
+        <div class="field">
+            <input class="btn btn-primary" value="Create Channel" type="submit" />
+        </div>
+    </div>
+  }
+}

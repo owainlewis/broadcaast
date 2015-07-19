@@ -1,0 +1,60 @@
+@(channel: Channel, items: Seq[Item], commentForm: Form[ItemData], currentUser: Option[User])
+
+@layouts.main(io.forward.util.Sanitizer.truncate(channel.title), currentUser) {
+
+    @channels.overview(channel, items)
+
+    <script>
+        window.onload = function () {
+            // new App.Views.Items({channel: @channel.id});
+        }
+    </script>
+
+    <script type="text/template" id="commentTemplate">
+        <div class="card item-<%= id %>">
+            <div class="card-header">
+                <div class="header-left">
+                    <img class='avatar' src="<%= this.model.get('image') %>" />
+                </div>
+                <div class="header-right">
+                    <h3></h3>
+                    <div class="posted">
+                        <%= JSON.stringify(this.model) %>
+                        <%= this.model.get('created') %>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <%= this.model.get('body') %>
+            </div>
+        </div>
+    </script>
+
+    <div class="channel">
+
+        @if(currentUser.isDefined) {
+            @{
+                if(channel.locked) {
+                    if(currentUser.map(_.id) == Some(channel.creator)) {
+                        channels.form(channel, currentUser)
+                    }
+                } else {
+                    channels.form(channel, currentUser)
+                }
+            }
+
+        } else {
+            <div class="notice">
+                <a href="@routes.AuthenticationController.login">Log in</a> or
+                <a href="@routes.RegistrationController.signUp">Sign up</a>
+                to add something
+            </div>
+        }
+
+        <div class="cards">
+          @items.map { item =>
+            @channels.cards.comment(item, currentUser)
+          }
+        </div>
+    </div>
+}

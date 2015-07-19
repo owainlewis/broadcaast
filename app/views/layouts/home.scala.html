@@ -1,0 +1,27 @@
+@(title: String, currentUser: Option[User] = None)(content: Html)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>@title</title>
+        @layouts.head()
+    </head>
+    <body class="homepage">
+
+        @layouts.header(currentUser)
+
+        <div class="home">
+          <div class="overlay"></div>
+          <div class="container">
+            @content
+          </div>
+        </div>
+
+        <footer>
+            <ul>
+                <li><a href="@routes.StaticController.faq">FAQ</a></li>
+                <li><a href="@routes.StaticController.press">Press</a></li>
+            </ul>
+        </footer>
+    </body>
+</html>

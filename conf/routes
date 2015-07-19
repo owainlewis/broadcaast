@@ -1,0 +1,93 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# =========================================================
+# Home page
+# =========================================================
+
+GET     /                           controllers.HomeController.index
+
+# =========================================================
+# Static pages
+# =========================================================
+
+GET /faq                            controllers.StaticController.faq
+GET /press                          controllers.StaticController.press
+
+# =========================================================
+# Streams
+# =========================================================
+
+GET /channels                    controllers.ChannelController.index
+GET /channels/new                controllers.ChannelController.newChannel
+GET /channels/:id                controllers.ChannelController.show(id: Long)
+
+POST /streams                   controllers.ChannelController.create
+
+# =========================================================
+# Feed Items
+# =========================================================
+
+GET /channel/:stream/items/:item        controllers.ItemController.show(stream: Long, item: Long)
+
+POST /channel/:id                       controllers.ItemController.create(id: Long)
+
+GET /channel/:channel/items/:item/delete controllers.ItemController.delete(channel: Long, item: Long)
+
+# =========================================================
+# Actions
+# =========================================================
+
+GET /channel/:channel/items/:item/like   controllers.ActionController.like(channel: Long, item: Long)
+
+# =========================================================
+# Registration
+# =========================================================
+
+GET  /signup                        controllers.RegistrationController.signUp
+POST /signup                        controllers.RegistrationController.create
+
+# =========================================================
+# Session
+# =========================================================
+
+GET /login                          controllers.AuthenticationController.login
+GET /logout                         controllers.AuthenticationController.logout
+POST /login                         controllers.AuthenticationController.authenticate
+
+# =========================================================
+# Users
+# =========================================================
+
+GET /users                          controllers.UserController.index
+GET /users/:username                controllers.UserController.show(username: String)
+
+GET /profile/edit                   controllers.UserController.edit
+
+POST /users/                        controllers.UserController.update
+
+# =========================================================
+# API
+# =========================================================
+
+# =========================================================
+# Users
+# =========================================================
+
+GET /api/users                      controllers.api.UserController.index
+GET /api/users/:id                  controllers.api.UserController.show(id: Long)
+
+# =========================================================
+# Streams
+# =========================================================
+
+GET /api/users/:user/channels                   controllers.api.ChannelController.index(user: Long)
+GET /api/users/:user/channels/:id               controllers.api.ChannelController.show(user: Long, id: Long)
+GET /api/users/:user/channels/:channel/items    controllers.api.ItemController.index(user: Long, channel: Long)
+
+# =========================================================
+## Assets
+# =========================================================
+
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
