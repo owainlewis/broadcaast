@@ -8,12 +8,6 @@
 
     <!-- <h3>0 subscribers</h3> -->
 
-    @if(channel.locked) {
-        <p><strong>This channel is locked. Only the owner or invited members can add to it</strong></p>
-    } else {
-        <p><strong>This channel is open. Anyone can add content</strong></p>
-    }
-
     @if(comments.flatMap(_.user).toSet.size > 1) {
     <ul class="participants">
       @io.forward.util.Comments.extractAvatars(channel, comments).map { profileImage =>

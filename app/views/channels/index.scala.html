@@ -9,7 +9,7 @@
           @newest.map { stream =>
           <li>
               <a href="@routes.ChannelController.show(stream.id)">
-                  @io.forward.util.Sanitizer.truncate(stream.title)
+                  /@io.forward.util.Sanitizer.truncate(stream.title)
                   <div class="created">@stream.createdInWords</div>
                   <div class="created-by">Started by <strong>@(stream.createdBy map (_.username) getOrElse("Unknown User"))</strong></div>
               </a>

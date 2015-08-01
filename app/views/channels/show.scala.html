@@ -33,15 +33,7 @@
     <div class="channel">
 
         @if(currentUser.isDefined) {
-            @{
-                if(channel.locked) {
-                    if(currentUser.map(_.id) == Some(channel.creator)) {
-                        channels.form(channel, currentUser)
-                    }
-                } else {
-                    channels.form(channel, currentUser)
-                }
-            }
+          @channels.form(channel, currentUser)
 
         } else {
             <div class="notice">

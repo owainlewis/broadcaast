@@ -16,11 +16,10 @@ object ChannelRepository extends Repository[Channel] {
     get[String]("title") ~
     get[Option[String]]("context") ~
     get[Boolean]("isPublic") ~
-    get[Boolean]("locked") ~
     get[Long]("creator") ~
     get[DateTime]("created") map {
-      case id ~ title ~ context ~ public ~ locked ~ creator ~ created =>
-        Channel(id, title, context, public, locked, creator, created)
+      case id ~ title ~ context ~ public ~ creator ~ created =>
+        Channel(id, title, context, public, creator, created)
     }
   }
 
@@ -52,11 +51,10 @@ object ChannelRepository extends Repository[Channel] {
 
   def insert(title: String, context: Option[String], public: Boolean, creatorID: Long, locked: Boolean = false): Option[Long] =
     withConnection { implicit c =>
-      SQL(s"INSERT INTO $tableName (title, context, isPublic, locked, creator, created) VALUES ({title}, {context}, {public}, {locked}, {creator}, {created})").on(
+      SQL(s"INSERT INTO $tableName (title, context, isPublic, creator, created) VALUES ({title}, {context}, {public}, {creator}, {created})").on(
         'title -> title,
         'context -> context,
         'public -> true,
-        'locked -> locked,
         'creator -> creatorID,
         'created -> new DateTime
       ).executeInsert()

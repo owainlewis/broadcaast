@@ -10,7 +10,6 @@ case class Channel(
   title: String,
   context: Option[String],
   public: Boolean, // A stream can be public or private (only invited users)
-  locked: Boolean, // A locked stream means only the owner can add things to it
   creator: Long,
   created: DateTime = new DateTime) {
 

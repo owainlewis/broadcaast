@@ -20,7 +20,6 @@ CREATE TABLE Channels(
     id bigint NOT NULL DEFAULT nextval('channel_id_seq'),
     title varchar NOT NULL,
     context varchar,
-    locked boolean NOT NULL DEFAULT true,
     isPublic boolean NOT NULL DEFAULT true,
     creator bigint NOT NULL,
     created TIMESTAMP WITH TIME ZONE NOT NULL,
