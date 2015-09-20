@@ -1,7 +1,7 @@
 package controllers
 
-import repository.{ActionsRepository, ItemRepository}
 import play.api.mvc.Action
+import repository.ItemRepository
 import security.Secured
 
 object ItemController extends SessionController with Forms with Secured {

@@ -2,10 +2,11 @@
 
 <div class="card stream-form padded">
     @helper.form(action = routes.ItemController.create(stream.id), 'enctype -> "multipart/form-data") {
+        <div>
+            <textarea id="body" name="body" placeholder="Add something..."></textarea>
+            <p>Remaining: 256</p>
+        </div>
 
-        <textarea id="body" name="body" placeholder="Add something..."></textarea>
-
-        <p>Add a message, image, link or video</p>
         <div class="field">
             <input type="submit" value="Add" class="btn btn-large btn-primary" />
         </div>
