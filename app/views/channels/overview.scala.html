@@ -1,26 +1,14 @@
 @(channel: Channel, comments: Seq[Item])
 
 <div class="card padded">
-
     <!-- Essential information -->
-
     <h1>@io.forward.util.Sanitizer.truncate(channel.title)</h1>
-
-    <!-- <h3>0 subscribers</h3> -->
-
+    <h3>0 subscribers</h3>
     @if(comments.flatMap(_.user).toSet.size > 1) {
     <ul class="participants">
       @io.forward.util.Comments.extractAvatars(channel, comments).map { profileImage =>
         <li><img src="@profileImage" /></li>
       }
     </ul>
-    }
-
-    @channel.createdBy.map { user =>
-      <p>Discussion started by <a href="@routes.UserController.show(user.username)">@user.username</a></p>
-    }
-
-    @for(context <- channel.context) {
-        <div class="context">@context</div>
     }
 </div>

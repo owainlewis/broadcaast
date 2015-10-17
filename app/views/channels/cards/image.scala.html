@@ -1,9 +1,9 @@
-@(comment: Item, currentUser: Option[User])
+@(comment: Item, currentUser: Option[User], href: String)
 
 <div class="card card-image item-@comment.id">
     <div class="card-header">
         <div class="header-left">
-            <img class='avatar' src="@comment.userImage" />
+            <img class='avatar' src="http://cdn2.stocksy.com/a/fJf100/z0/397151.jpg" />
         </div>
         <div class="header-right">
             <h3>@comment.userName</h3>
@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="card-inner">
-
+      <img src="@href" />
     </div>
     <div class="card-meta">
         <ul>

@@ -1,6 +1,6 @@
 @(stream: Channel, currentUser: Option[User])
 
-<div class="card stream-form padded">
+<div class="card channel-form padded">
     @helper.form(action = routes.ItemController.create(stream.id), 'enctype -> "multipart/form-data") {
         <div>
             <textarea id="body" name="body" placeholder="Add something..."></textarea>

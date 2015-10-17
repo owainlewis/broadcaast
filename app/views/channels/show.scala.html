@@ -31,10 +31,8 @@
     </script>
 
     <div class="channel">
-
         @if(currentUser.isDefined) {
           @channels.form(channel, currentUser)
-
         } else {
             <div class="notice">
                 <a href="@routes.AuthenticationController.login">Log in</a> or
@@ -46,6 +44,8 @@
         <div class="cards">
           @items.map { item =>
             @channels.cards.comment(item, currentUser)
+            @channels.cards.image(item, currentUser, "http://cdn1.stocksy.com/a/0Xi100/z0/409510.jpg")
+            @channels.cards.link(item, currentUser)
           }
         </div>
     </div>
