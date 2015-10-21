@@ -14,7 +14,7 @@ libraryDependencies ++= Seq(
   filters,
   "org.mindrot"            % "jbcrypt"    % "0.3m",
   "joda-time"              % "joda-time"  % "2.7",
-  "postgresql"             % "postgresql" % "9.1-901.jdbc4"
+  "org.postgresql"         % "postgresql" % "9.4-1204-jdbc42"
 )
 
 maintainer in Docker := "Owain Lewis <owain@owainlewis.com>"
