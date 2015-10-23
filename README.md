@@ -8,6 +8,10 @@ The application is based around the concept of broadcast channels which are cont
 
 If a channel is made public, other users can add things to the channel.
 
+# Revenue Model
+
+Two potential revenue models are obvious to me. 1. Users pay for private channels (where they can give access only to friends and family for example. Would be useful for broadcast channels of your personal photos etc). 2. An initial channel limit and the option to pay for more. I.e 10 free channels and unlimited at $9.99 per month or something similar. 
+
 ![](https://raw.githubusercontent.com/owainlewis/broadcaast/master/public/images/press/home.png)
 
 ![](https://raw.githubusercontent.com/owainlewis/broadcaast/master/public/images/press/app.png)
