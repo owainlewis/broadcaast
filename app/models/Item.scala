@@ -4,12 +4,7 @@ import org.joda.time.DateTime
 import play.api.libs.json._
 import repository.{ActionsRepository, UserRepository}
 
-case class Item(
-                 id: Long, 
-                 channel: Long, 
-                 user: Option[Long], 
-                 body: Option[String],
-                 created: DateTime) {
+case class Item(id: Long, channel: Long, user: Option[Long], body: Option[String], created: DateTime) {
 
   def getUser: Option[User] =
     user flatMap UserRepository.findOneById
@@ -24,7 +19,5 @@ case class Item(
 }
 
 object Item {
-
   implicit val commentFormats = Json.format[Item]
-
 }
