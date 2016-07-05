@@ -8,14 +8,11 @@ import play.api.Play.current
 
 object ChannelController extends SessionController with Forms with Secured {
 
-  /**
-   * Cache time in seconds
-   */
   private val cacheTime = 60
 
   def index = Action { implicit request =>
-      val newest = Cache.getOrElse("new-channels", cacheTime) { ChannelRepository.newItems() }
-      Ok(views.html.channels.index(newest, getCurrentUser(request)))
+    val newest = Cache.getOrElse("new-channels", cacheTime) { ChannelRepository.newItems() }
+    Ok(views.html.channels.index(newest, getCurrentUser(request)))
   }
 
   def show(id: Long) = Action { implicit request =>
@@ -32,7 +29,6 @@ object ChannelController extends SessionController with Forms with Secured {
   def create = withUser { user => { implicit request =>
     channelForm.bindFromRequest.fold(
       formWithErrors => {
-        println(formWithErrors)
         BadRequest(views.html.channels.create(formWithErrors, getCurrentUser(request)))
       },
       channel => {
@@ -42,8 +38,6 @@ object ChannelController extends SessionController with Forms with Secured {
       }
     )
   }}
-
-  // Channel actions
 
   /**
    * Subscribe a user to a given channel. For instance a user might want to subscribe to BBC/world-news
