@@ -7,5 +7,4 @@ package models
  * @param user The user ID
  * @param action The action (e.g. like, dislike, favorite etc)
  */
-case class CommentAction(comment: Long, user: Long, action: String)
-
+case class CommentAction(comment: Long, user: Long, action: String)=
