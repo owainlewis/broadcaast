@@ -14,13 +14,9 @@ case class Channel(
   created: DateTime = new DateTime) {
 
   def createdBy: Option[User] = UserRepository.findOneById(creator)
-
   def createdInWords: Option[String] = HumanDate.timeAgoInWords(created)
-
 }
 
 object Channel extends TimestampImplicits {
-
   implicit val conversationFormats = Json.format[Channel]
 }
-
